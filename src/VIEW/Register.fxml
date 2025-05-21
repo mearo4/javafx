@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
+
+    <Rectangle height="700" styleClass="login-background" width="1000" />
+    
+    <HBox alignment="CENTER" spacing="0">
+        <VBox alignment="CENTER" styleClass="login-image-container" HBox.hgrow="ALWAYS">
+            <StackPane styleClass="login-logo-container">
+                <Circle radius="50" styleClass="login-logo-circle" />
+                <Label styleClass="login-logo-icon" text="✈" />
+            </StackPane>
+            
+            <Label styleClass="login-brand-name" text="AirTravel" />
+            <Label styleClass="login-brand-subtitle" text="Command Center" />
+            
+            <VBox maxWidth="400" spacing="15" styleClass="login-features">
+                <Label styleClass="login-feature-item" text="Rejoignez notre plateforme de gestion aéronautique" />
+                <Label styleClass="login-feature-item" text="Accès sécurisé à toutes les fonctionnalités" />
+                <Label styleClass="login-feature-item" text="Mises à jour régulières" />
+            </VBox>
+        </VBox>
+        
+        <VBox alignment="CENTER" maxWidth="500" styleClass="login-form-container" HBox.hgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" maxHeight="600" styleClass="register-scroll-pane" VBox.vgrow="ALWAYS">
+                <VBox maxWidth="350" spacing="20" styleClass="login-form">
+                    <Label styleClass="login-title" text="Créer un compte" />
+                    
+                    <HBox spacing="10">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS" />
+                        
+                        <VBox spacing="5" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    
+                    <VBox spacing="5" />
+                    
+                    <VBox spacing="5">
+                        <Label styleClass="login-label" text="Nom d'utilisateur" />
+                        <TextField fx:id="txtUsername" promptText="Choisissez un nom d'utilisateur" styleClass="login-input" />
+                    </VBox>
+                    
+                    <VBox spacing="5">
+                        <Label styleClass="login-label" text="Mot de passe" />
+                        <PasswordField fx:id="txtPassword" promptText="Créez un mot de passe" styleClass="login-input" />
+                        <Label styleClass="login-hint" text="Le mot de passe doit contenir au moins 8 caractères" />
+                    </VBox>
+                    
+                    <VBox spacing="5" />
+                    
+                    <VBox spacing="5" />
+                    
+                    <VBox spacing="5" />
+                    
+                    <CheckBox fx:id="chkTerms" styleClass="login-checkbox" text="J'accepte les termes et conditions" />
+                    
+                    <Button fx:id="btnRegister" onAction="#handleRegister" styleClass="login-button" text="S'inscrire" />
+                    
+                    <HBox alignment="CENTER" spacing="5">
+                        <Label styleClass="login-text" text="Vous avez déjà un compte ?" />
+                        <Hyperlink fx:id="linkLogin" onAction="#goToLogIn" styleClass="login-link" text="Se connecter" />
+                    </HBox>
+                </VBox>
+            </ScrollPane>
+            
+            <Label styleClass="login-copyright" text="© 2023 AirTravel Command Center. Tous droits réservés." />
+        </VBox>
+    </HBox>
+</StackPane>

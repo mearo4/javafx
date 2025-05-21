@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AvionController" spacing="15" style="-fx-padding: 20;" stylesheets="@style.css">
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Rechercher par code ou modèle" styleClass="search-field"/>
+        <Button fx:id="searchButton" text="🔍" onAction="#searchAvion" styleClass="search-button"/>
+    </HBox>
+    <HBox spacing="10">
+        <TextField fx:id="codeField" promptText="Code avion" styleClass="text-field"/>
+        <TextField fx:id="modelField" promptText="Modèle" styleClass="text-field"/>
+        <TextField fx:id="capacityField" promptText="Capacité" styleClass="text-field"/>
+        <Button fx:id="addButton" text="Ajouter" onAction="#addAvion" styleClass="add-button"/>
+    </HBox>
+    <TableView fx:id="avionTable" styleClass="rounded-table">
+        <columns>
+            <TableColumn fx:id="codeColumn" text="Code" prefWidth="150"/>
+            <TableColumn fx:id="modelColumn" text="Modèle" prefWidth="200"/>
+            <TableColumn fx:id="capacityColumn" text="Capacité" prefWidth="150"/>
+        </columns>
+    </TableView>
+</VBox>

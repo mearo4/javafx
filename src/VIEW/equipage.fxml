@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="content-view" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EquipageController">
+    <top>
+        <VBox spacing="15">
+            <HBox alignment="CENTER_LEFT" styleClass="view-header">
+                <Label styleClass="view-title" text="Gestion des Équipages">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnArchives" styleClass="btn-secondary" text="Voir archives">
+                    <padding>
+                        <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnAddNew" styleClass="btn-primary" text="+ Ajouter un membre d'équipage">
+                    <padding>
+                        <Insets bottom="10.0" left="5.0" right="10.0" top="10.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="10.0" right="5.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+            </HBox>
+            <!-- Search and filter bar -->
+            <HBox prefHeight="52.0" prefWidth="1012.0" spacing="10" styleClass="search-bar">
+                <TextField fx:id="txtSearch" prefHeight="31.0" prefWidth="924.0" promptText="Rechercher un membre d'équipage..." HBox.hgrow="ALWAYS">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </TextField>
+                <Button fx:id="btnSearch" styleClass="btn-search">
+                    <graphic>
+                        <Region styleClass="icon-search" />
+                    </graphic>
+                </Button>
+                <Button fx:id="btnFilter" styleClass="btn-filter">
+                    <graphic>
+                        <Region styleClass="icon-filter" />
+                    </graphic>
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </Button>
+                <VBox.margin>
+                    <Insets right="10.0" />
+                </VBox.margin>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Main content with table and details -->
+    <center>
+        <SplitPane dividerPositions="0.7" styleClass="content-split-pane">
+            <!-- Table of equipages -->
+            <VBox styleClass="table-container">
+                <TableView fx:id="tv" prefHeight="546.0" prefWidth="692.0" styleClass="equipages-table" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="60.0" text="ID" />
+                        <TableColumn fx:id="colNom" prefWidth="120.0" text="Nom" />
+                        <TableColumn fx:id="colPrenom" prefWidth="120.0" text="Prénom" />
+                        <TableColumn fx:id="colFonction" prefWidth="120.0" text="Fonction" />
+                        <TableColumn fx:id="colExperience" prefWidth="120.0" text="Expérience" />
+                        <TableColumn fx:id="colDisponibilite" prefWidth="150.0" text="Disponibilité" />
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucun membre d'équipage disponible" />
+                    </placeholder>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </TableView>
+            </VBox>
+            <!-- Details panel -->
+            <StackPane prefHeight="546.0" prefWidth="256.0" styleClass="details-container">
+                <!-- No selection message -->
+                <Label fx:id="lblNoSelection" styleClass="no-selection-label" text="Sélectionnez un membre d'équipage pour voir les détails" />
+                
+                <!-- Details pane (hidden by default) -->
+                <VBox fx:id="detailsPane" styleClass="details-pane" visible="false">
+                    <Label styleClass="details-title" text="Détails du membre d'équipage" />
+                    <TabPane styleClass="details-tabs">
+                        <Tab closable="false" text="Informations">
+                            <VBox spacing="15" styleClass="details-tab-content">
+                                <GridPane hgap="15" vgap="10">
+                                    <Label fx:id="detailId" styleClass="details-value" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    <Label fx:id="detailNom" styleClass="details-value" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label fx:id="detailPrenom" styleClass="details-value" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label fx:id="detailFonction" styleClass="details-value" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="detailExperience" styleClass="details-value" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="detailDisponibilite" styleClass="details-value" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <columnConstraints>
+                                        <ColumnConstraints />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                    </rowConstraints>
+                                </GridPane>
+                                <HBox spacing="10" styleClass="details-actions">
+                                    <Button fx:id="btnModifier" styleClass="btn-secondary" text="Modifier"/>
+                                    <Button fx:id="btnChangerDisponibilite" styleClass="btn-secondary" text="Changer disponibilité"/>
+                                    <Button fx:id="btnSupprimer" styleClass="btn-danger" text="Archiver"/>
+                                    <Button fx:id="btnRestaurer" styleClass="btn-primary" text="Restaurer"/>
+                                </HBox>
+                            </VBox>
+                        </Tab>
+                        <Tab closable="false" text="Vols">
+                            <VBox spacing="10" styleClass="details-tab-content">
+                                <ListView styleClass="history-list" VBox.vgrow="ALWAYS">
+                                    <Label text="Aucun vol associé à ce membre d'équipage" />
+                                </ListView>
+                            </VBox>
+                        </Tab>
+                        <Tab closable="false" text="Documents">
+                            <VBox spacing="10" styleClass="details-tab-content">
+                                <ListView styleClass="documents-list" VBox.vgrow="ALWAYS">
+                                    <Label text="Certificat de formation.pdf" />
+                                    <Label text="Certificat médical.pdf" />
+                                    <Label text="Rapport d'évaluation.pdf" />
+                                </ListView>
+                            </VBox>
+                        </Tab>
+                    </TabPane>
+                </VBox>
+            </StackPane>
+        </SplitPane>
+    </center>
+</BorderPane>

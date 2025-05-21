@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.Circle?>
+<BorderPane  fx:id="mainBorderPane" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.DashboardController"
+            stylesheets="@style.css"
+            prefHeight="800.0" prefWidth="1200.0">
+            
+    <!-- Top Header -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20" />
+            </padding>
+            
+            <Label styleClass="app-title" text="✈ AirTravel Agnece de voyage " />
+            
+            <Region HBox.hgrow="ALWAYS" />
+            
+            <Label fx:id="lblDate" styleClass="date-label" />
+            
+            <Button styleClass="header-button">
+                <graphic>
+                    <Region styleClass="icon-notification" />
+                </graphic>
+            </Button>
+            
+            <Button styleClass="header-button">
+                <graphic>
+                    <Region styleClass="icon-settings" />
+                </graphic>
+            </Button>
+            
+            <Button styleClass="profile-button">
+                <graphic>
+                    <StackPane>
+                        <Circle radius="16" styleClass="avatar-circle" />
+                        <Label text="AT" styleClass="avatar-text" />
+                    </StackPane>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+    
+    <!-- Left Sidebar -->
+    <left>
+        <VBox fx:id="sidebarVBox" styleClass="sidebar" prefWidth="250">
+            <padding>
+                <Insets top="20" right="15" bottom="20" left="15" />
+            </padding>
+            
+            <!-- Logo and Brand -->
+            <HBox styleClass="sidebar-header" alignment="CENTER_LEFT" spacing="10">
+                <Label styleClass="sidebar-logo" text="✈" />
+                <Label styleClass="sidebar-brand" text="AirTravel" />
+            </HBox>
+            
+            <Separator styleClass="sidebar-separator">
+                <VBox.margin>
+                    <Insets top="20" bottom="20" />
+                </VBox.margin>
+            </Separator>
+            
+            <!-- Navigation Menu -->
+            <Label styleClass="sidebar-section" text="MENU PRINCIPAL" />
+            
+            <Button fx:id="btnAvions" styleClass="nav-button" text="Avions">
+                <graphic>
+                    <Region styleClass="icon-plane" />
+                </graphic>
+            </Button>
+            
+            <Button fx:id="btnVols" styleClass="nav-button" text="Vols">
+                <graphic>
+                    <Region styleClass="icon-flight" />
+                </graphic>
+            </Button>
+            
+            <Button fx:id="btnEquipage" styleClass="nav-button" text="Équipage">
+                <graphic>
+                    <Region styleClass="icon-crew" />
+                </graphic>
+            </Button>
+            
+            <Button fx:id="btnPilotes" styleClass="nav-button" text="Pilotes">
+                <graphic>
+                    <Region styleClass="icon-pilot" />
+                </graphic>
+            </Button>
+            
+            <Separator styleClass="sidebar-separator">
+                <VBox.margin>
+                    <Insets top="20" bottom="20" />
+                </VBox.margin>
+            </Separator>
+            
+            <!-- Additional Menu Items -->
+            <Label styleClass="sidebar-section" text="ADMINISTRATION" />
+            
+            <Button styleClass="nav-button" text="Paramètres">
+                <graphic>
+                    <Region styleClass="icon-settings" />
+                </graphic>
+            </Button>
+            
+            <Button styleClass="nav-button" text="Rapports">
+                <graphic>
+                    <Region styleClass="icon-reports" />
+                </graphic>
+            </Button>
+            
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <Button styleClass="logout-button" text="Déconnexion">
+                <graphic>
+                    <Region styleClass="icon-logout" />
+                </graphic>
+            </Button>
+        </VBox>
+    </left>
+    
+    <!-- Main Content -->
+    <center>
+        <VBox styleClass="main-content">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20" />
+            </padding>
+            
+            <!-- Stats Cards -->
+            <HBox  fx:id="statsContainer" spacing="20" alignment="CENTER">
+                <VBox.margin>
+                    <Insets bottom="20" />
+                </VBox.margin>
+                
+                <VBox styleClass="stat-card">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Region styleClass="stat-icon, icon-plane" />
+                        <VBox>
+                            <Label styleClass="stat-title" text="Avions" />
+                            <Label fx:id="lblAvionsCount" styleClass="stat-value" text="0" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+                
+                <VBox styleClass="stat-card">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Region styleClass="stat-icon, icon-flight" />
+                        <VBox>
+                            <Label styleClass="stat-title" text="Vols" />
+                            <Label fx:id="lblVolsCount" styleClass="stat-value" text="0" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+                
+                <VBox styleClass="stat-card">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Region styleClass="stat-icon, icon-crew" />
+                        <VBox>
+                            <Label styleClass="stat-title" text="Équipage" />
+                            <Label fx:id="lblEquipageCount" styleClass="stat-value" text="0" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+                
+                <VBox styleClass="stat-card">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Region styleClass="stat-icon, icon-pilot" />
+                        <VBox>
+                            <Label styleClass="stat-title" text="Pilotes" />
+                            <Label fx:id="lblPilotesCount" styleClass="stat-value" text="0" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </HBox>
+            
+            <!-- Dynamic Content Area -->
+            <StackPane fx:id="contentArea" VBox.vgrow="ALWAYS" styleClass="content-area" />
+        </VBox>
+    </center>
+</BorderPane>
